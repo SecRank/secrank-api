@@ -9,6 +9,14 @@ Installation
    pip3 install secrank
 
 
+API Token
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+   ~/.secrank.lic
+
+
 Usage
 ~~~~~~~~~~~~~~~~~~~
 
