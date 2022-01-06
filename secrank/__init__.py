@@ -3,5 +3,5 @@
 
 __name__ = 'secrank'
 __package__ = 'secrank'
-__version__ = '1.0.0'
+__version__ = '1.0.3'
 __site__ = "https://secrank.com"

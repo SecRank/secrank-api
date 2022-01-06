@@ -53,6 +53,7 @@ def api():
     parser.add_argument('-rtype', '--rtype', dest='rtype', type=str, default='', help='request type')
     parser.add_argument('-top', '--top', dest='top', type=int, default=0, help='top rows')
     parser.add_argument('-tail', '--tail', dest='tail', type=int, default=0, help='last rows')
+    parser.add_argument('-mw', '--max-column-width', dest='max_column_width', type=int, default=0, help='max column width')
 
     args, _ = parser.parse_known_args()
 
@@ -82,8 +83,9 @@ def api():
     if len(args.sort) > 0:
         sorts = args.sort.split(',')
         df = df.sort_values(by=sorts, ascending=sort_ascending).reset_index(drop=True)
-        df['time_first'] = df['time_first'].astype('datetime64[s]')
-        df['time_last'] = df['time_last'].astype('datetime64[s]')
+
+    df['time_first'] = df['time_first'].astype('datetime64[s]')
+    df['time_last'] = df['time_last'].astype('datetime64[s]')
 
     if args.top > 0:
         df = df.head(args.top)
@@ -91,6 +93,9 @@ def api():
     elif args.tail > 0:
         df = df.tail(args.tail)
         pd.set_option('display.max_rows', None)
+
+    pd.set_option('display.max_colwidth', args.max_column_width)
+    
     return df
 
 def call(api_path, rtype='', limit=1000):
