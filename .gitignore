@@ -1,0 +1,5 @@
+*.pyc
+/secrank.egg-info/
+/dist/
+/build/
+__pycache__
