@@ -32,25 +32,27 @@ pdns
 
 ::
 
-  $ secrank pdns -h
-  usage: secrank [-h] [-d DOMAIN] [-a ANSWER] [-s SORT] [-l LIMIT] [-st SORT_TYPE] [-rtype RTYPE] [-top TOP] [-tail TAIL]
-  secrank-pdns command line tool
-  optional arguments:
-    -h, --help            show this help message and exit
-    -d DOMAIN, --domain DOMAIN
-                          query domain
-    -a ANSWER, --answer ANSWER
-                          response rrdata
-    -s SORT, --sort SORT  sort by
-    -l LIMIT, --limit LIMIT
-                          limit
-    -st SORT_TYPE, --sort-type SORT_TYPE
-                          sort by
-    -rtype RTYPE, --rtype RTYPE
-                          request type
-    -top TOP, --top TOP   top rows
-    -tail TAIL, --tail TAIL
-                          last rows
+   $ secrank pdns -h                                
+   usage: secrank [-h] [-d DOMAIN] [-a ANSWER] [-s SORT] [-l LIMIT] [-st SORT_TYPE] [-rtype RTYPE] [-top TOP] [-tail TAIL] [-mw MAX_COLUMN_WIDTH]
+   secrank-pdns command line tool
+   optional arguments:
+     -h, --help            show this help message and exit
+     -d DOMAIN, --domain DOMAIN
+                           query domain
+     -a ANSWER, --answer ANSWER
+                           response rrdata
+     -s SORT, --sort SORT  sort by
+     -l LIMIT, --limit LIMIT
+                           limit
+     -st SORT_TYPE, --sort-type SORT_TYPE
+                           sort by
+     -rtype RTYPE, --rtype RTYPE
+                           request type
+     -top TOP, --top TOP   top rows
+     -tail TAIL, --tail TAIL
+                           last rows
+     -mw MAX_COLUMN_WIDTH, --max-column-width MAX_COLUMN_WIDTH
+                           max column width
 
 ::
 
