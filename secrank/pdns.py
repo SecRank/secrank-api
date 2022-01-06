@@ -49,7 +49,7 @@ def api():
     parser.add_argument('-a', '--answer', dest='answer', type=str, default='', help='response rrdata')
     parser.add_argument('-s', '--sort', dest='sort', type=str, default='', help='sort by')
     parser.add_argument('-l', '--limit', dest='limit', type=int, default=1000, help='limit')
-    parser.add_argument('-st', '--sort-type', dest='sort_type', type=str, default='desc', help='sort by')
+    parser.add_argument('-st', '--sort-type', dest='sort_type', type=str, default='desc', help='asc or desc')
     parser.add_argument('-rtype', '--rtype', dest='rtype', type=str, default='', help='request type')
     parser.add_argument('-top', '--top', dest='top', type=int, default=0, help='top rows')
     parser.add_argument('-tail', '--tail', dest='tail', type=int, default=0, help='last rows')
