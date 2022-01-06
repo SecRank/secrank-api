@@ -60,3 +60,5 @@ pdns
    secrank pdns -d www.baidu.com
    secrank pdns -d www.baidu.com -top 10
    secrank pdns -d www.baidu.com -l 100 -top 100 -s count
+   secrank pdns -d www.baidu.com -l 100 -top 100 -s count -st asc
+   secrank pdns -d www.baidu.com -l 100 -top 100 -s count -st desc
