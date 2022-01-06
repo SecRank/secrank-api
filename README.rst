@@ -51,3 +51,10 @@ pdns
     -top TOP, --top TOP   top rows
     -tail TAIL, --tail TAIL
                           last rows
+
+::
+
+   Examples:
+   secrank pdns -d www.baidu.com
+   secrank pdns -d www.baidu.com -top 10
+   secrank pdns -d www.baidu.com -l 100 -top 100 -s count
