@@ -32,27 +32,21 @@ pdns
 
 ::
 
-   $ secrank pdns -h                                
-   usage: secrank [-h] [-d DOMAIN] [-a ANSWER] [-s SORT] [-l LIMIT] [-st SORT_TYPE] [-rtype RTYPE] [-top TOP] [-tail TAIL] [-mw MAX_COLUMN_WIDTH]
+   $ secrank pdns -h                                  
+   usage: cli.py [-h] [-d DOMAIN] [-a ANSWER] [-l LIMIT] [-rtype RTYPE]
+
    secrank-pdns command line tool
+
    optional arguments:
-     -h, --help            show this help message and exit
-     -d DOMAIN, --domain DOMAIN
+   -h, --help            show this help message and exit
+   -d DOMAIN, --domain DOMAIN
                            query domain
-     -a ANSWER, --answer ANSWER
+   -a ANSWER, --answer ANSWER
                            response rrdata
-     -s SORT, --sort SORT  sort by
-     -l LIMIT, --limit LIMIT
+   -l LIMIT, --limit LIMIT
                            limit
-     -st SORT_TYPE, --sort-type SORT_TYPE
-                           sort by
-     -rtype RTYPE, --rtype RTYPE
+   -rtype RTYPE, --rtype RTYPE
                            request type
-     -top TOP, --top TOP   top rows
-     -tail TAIL, --tail TAIL
-                           last rows
-     -mw MAX_COLUMN_WIDTH, --max-column-width MAX_COLUMN_WIDTH
-                           max column width
 
 ::
 
@@ -62,3 +56,32 @@ pdns
    secrank pdns -d www.baidu.com -l 100 -top 100 -s count
    secrank pdns -d www.baidu.com -l 100 -top 100 -s count -st asc
    secrank pdns -d www.baidu.com -l 100 -top 100 -s count -st desc
+
+
+whois
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+   $ secrank whois -h          
+   usage: cli.py [-h] [-c COLUMN] [-f FIND] [-d DOMAIN] [-l LIMIT]
+
+   secrank-whois command line tool
+
+   optional arguments:
+   -h, --help            show this help message and exit
+   -c COLUMN, --column COLUMN
+                           column: org | email | phone | nameserver | name
+   -f FIND, --find FIND  find value
+   -d DOMAIN, --domain DOMAIN
+                           query domain
+   -l LIMIT, --limit LIMIT
+                           limit
+
+::
+
+   Examples:
+   secrank whois -d baidu.com
+   secrank whois -f zhangsan
+   secrank whois -f zhangsan
+   secrank whois +86.13511629585 -c phone

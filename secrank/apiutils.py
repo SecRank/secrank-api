@@ -5,7 +5,7 @@ import requests
 
 api_base_url = 'https://api.secrank.cn'
 
-def call(path, token, params={}):
+def call(token, path, params={}):
     headers = {
         "fdp-token": token
     }
