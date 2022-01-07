@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-import pandas as pd
 from secrank import apiutils
 from secrank.exceptions import ArgumentsError
 
@@ -51,7 +50,7 @@ def api(token, argv):
             params['column'] = args.findcolumn
             params['value'] = args.find
     
-    df = call(token, api_path, params=params)
+    df = apiutils.call(token, api_path, params=params)
 
     if len(args.domain) > 0:
         columns = args.columns.split(',')
@@ -60,8 +59,3 @@ def api(token, argv):
                 df = df.drop(column, axis=1)
 
     return df
-
-def call(token, api_path, params={}):
-    records = apiutils.call(token, api_path, params)
-    return pd.DataFrame.from_dict(records)
-

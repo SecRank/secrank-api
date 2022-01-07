@@ -14,9 +14,10 @@ sys.path.insert(1, module_path)
 
 from secrank import pdns
 from secrank import whois
+from secrank import trends
 from secrank import logger
 from secrank.exceptions import ArgumentsError
-
+from secrank import apiutils
 
 def main():
     log = logger.init(__name__)
@@ -43,13 +44,17 @@ def main():
         return
 
     parser = argparse.ArgumentParser(description='secrank command line tool', add_help=False)
+    parser.add_argument('-v', '--verbose', dest='verbose', action="store_true", help='Verbose')
+    parser.add_argument('-trace', '--trace', dest='trace', action="store_true", help='Trace http')
     parser.add_argument('-view', '--view', dest='view', type=str, default='table', help='view type')
     parser.add_argument('-mw', '--max-column-width', dest='max_column_width', type=int, default=0, help='max column width')
     parser.add_argument('-top', '--top', dest='top', type=int, default=0, help='top rows')
     parser.add_argument('-tail', '--tail', dest='tail', type=int, default=0, help='last rows')
-    parser.add_argument('-s', '--sort', dest='sort', type=str, default='', help='sort by')
-    parser.add_argument('-st', '--sort-type', dest='sort_type', type=str, default='desc', help='asc or desc')
+    parser.add_argument('-sort', '--sort', dest='sort', type=str, default='', help='sort by')
+    parser.add_argument('-sort-type', '--sort-type', dest='sort_type', type=str, default='desc', help='asc or desc')
     args, _ = parser.parse_known_args(sys.argv[2:])
+
+    apiutils.trace = args.trace
 
     sort_ascending = True
     if args.sort_type == 'desc':
@@ -70,12 +75,16 @@ def main():
         api = pdns.api
     elif api_type == 'whois':
         api = whois.api
+    elif api_type == 'trends':
+        api = trends.api
     else:
         log.error('unknown api')
         return
     
     try:
         df = api(token, sys.argv[2:])
+        if df is None:
+            return
 
         pd.set_option('display.max_colwidth', args.max_column_width)
 

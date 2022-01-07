@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-import pandas as pd
 from secrank import apiutils
 
 from secrank.exceptions import ArgumentsError
@@ -47,18 +46,13 @@ def api(token, argv):
     if len(api_path) == 0:
         raise Exception('Invalid API path')
 
-    df = call(token, api_path, rtype=args.rtype, params={
+    df = apiutils.call(token, api_path, params={
         'limit': args.limit,
+        'rtype': rtypes[args.rtype.upper()],
     })
 
     df['time_first'] = df['time_first'].astype('datetime64[s]')
     df['time_last'] = df['time_last'].astype('datetime64[s]')
 
     return df
-
-def call(token, api_path, rtype='', params={}):
-    if rtype is not None:
-        params['rtype'] = rtypes[rtype.upper()] 
-    records = apiutils.call(token, api_path, params)
-    return pd.DataFrame.from_dict(records)
 
