@@ -59,12 +59,17 @@ def api(token, argv):
         if column not in columns:
             df = df.drop(column, axis=1)
 
+    plt.subplots(2, 1)
+
+    plt.subplots(1, 1)
     plt.plotsize(150, 20)
     plt.title("Domain Trends (Requests)")
     plt.clc()
     plt.bar(days, df['clientipCount'], orientation = "v", width = 0.3)
     plt.show()
 
+    plt.subplots(2, 1)
+    plt.span(1, 20)
     plt.plotsize(150, 20)
     plt.title("Domain Trends (Clients)")
     plt.clc()
