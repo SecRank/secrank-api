@@ -65,7 +65,7 @@ def api(token, argv):
     plt.plotsize(150, 20)
     plt.title("Domain Trends (Requests)")
     plt.clc()
-    plt.bar(days, df['clientipCount'], orientation = "v", width = 0.3)
+    plt.bar(days, df['totalCount'], orientation = "v", width = 0.3)
     plt.show()
 
     plt.subplots(2, 1)
@@ -73,7 +73,7 @@ def api(token, argv):
     plt.plotsize(150, 20)
     plt.title("Domain Trends (Clients)")
     plt.clc()
-    plt.bar(days, df['totalCount'], orientation = "v", width = 0.3)
+    plt.bar(days, df['clientipCount'], orientation = "v", width = 0.3)
 
     plt.show()
 
